@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Winter Arc — 90 Day Transformation</title>
+<meta name="description" content="A personal 90-day transformation command center.">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="bg-atmos"></div>
+
+<!-- ============================================================
+     AUTH SCREEN
+     ============================================================ -->
+<section id="screen-auth">
+  <div class="auth-shell">
+    <div class="auth-hero">
+      <div class="mark">WINTER ARC</div>
+      <div>
+        <h1>90 days.<br>One <em>version</em><br>of you.</h1>
+        <p>A daily command center for the version of yourself you're building this winter — steps, weight, discipline, and the streak that proves it.</p>
+      </div>
+      <div class="arc-track">
+        <div class="arc-bar"><i></i></div>
+        <span>DAY 17 OF 90</span>
+      </div>
+    </div>
+    <div class="auth-panel">
+      <div class="auth-tabs">
+        <button type="button" id="tab-login" class="active">Log in</button>
+        <button type="button" id="tab-signup">Create account</button>
+      </div>
+
+      <div class="auth-error" id="auth-error"></div>
+
+      <form class="auth-form active" id="form-login" novalidate>
+        <div class="field">
+          <label for="login-email">Email</label>
+          <input type="email" id="login-email" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" autocomplete="current-password" required>
+        </div>
+        <div class="auth-row-between">
+          <label class="checkline"><input type="checkbox" id="login-remember" checked> Remember me</label>
+          <button type="button" class="link-btn" id="btn-forgot">Forgot password?</button>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Log in</button>
+      </form>
+
+      <form class="auth-form" id="form-signup" novalidate>
+        <div class="field">
+          <label for="signup-name">Name</label>
+          <input type="text" id="signup-name" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="signup-email">Email</label>
+          <input type="email" id="signup-email" autocomplete="email" required>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="signup-password">Password</label>
+            <input type="password" id="signup-password" autocomplete="new-password" required minlength="6">
+          </div>
+          <div class="field">
+            <label for="signup-confirm">Confirm</label>
+            <input type="password" id="signup-confirm" autocomplete="new-password" required minlength="6">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Create account</button>
+      </form>
+
+      <div class="auth-switch" id="auth-switch-text">New here? <button type="button" class="link-btn" id="link-to-signup">Create an account</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ONBOARDING
+     ============================================================ -->
+<section id="screen-onboarding" class="hidden">
+  <div class="onboard-shell">
+    <div class="onboard-eyebrow">GETTING STARTED</div>
+    <h1 class="onboard-title">Build your baseline</h1>
+    <p class="onboard-sub">A few honest numbers now, so the next 90 days can prove something.</p>
+    <div class="onboard-steps" id="onboard-steps"></div>
+    <div class="onboard-card" id="onboard-card"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     MAIN APPLICATION
+     ============================================================ -->
+<div id="app" class="hidden">
+
+  <aside class="sidebar">
+    <div class="sidebar-brand"><span class="dot"></span><span>WINTER ARC</span></div>
+    <nav class="sidebar-nav" id="sidebar-nav">
+      <button data-page="dashboard" class="active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+        Dashboard
+      </button>
+      <button data-page="tracker">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        Daily Tracker
+      </button>
+      <button data-page="calendar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        90 Days
+      </button>
+      <button data-page="progress">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg>
+        Progress
+      </button>
+      <button data-page="weekly">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19h16M4 15h10M4 11h13M4 7h7"/></svg>
+        Weekly Review
+      </button>
+      <button data-page="goals">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>
+        Goals
+      </button>
+      <button data-page="settings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06A2 2 0 1 1 7.04 4.3l.06.06A1.65 1.65 0 0 0 8.92 4.7 1.65 1.65 0 0 0 10 3.09V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        Profile &amp; Settings
+      </button>
+    </nav>
+    <div class="sidebar-foot">
+      <div class="avatar" id="sidebar-avatar">A</div>
+      <div class="sidebar-foot-info">
+        <div class="name" id="sidebar-name">—</div>
+        <div class="sub" id="sidebar-daylabel">Day 1</div>
+      </div>
+      <button class="icon-btn" id="btn-logout" title="Log out" aria-label="Log out">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+      </button>
+    </div>
+  </aside>
+
+  <div class="main-col">
+    <div class="topbar">
+      <div class="topbar-brand"><span class="dot"></span>WINTER ARC</div>
+      <button class="icon-btn" id="btn-open-drawer" aria-label="More options">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/><circle cx="5" cy="12" r="1.6"/></svg>
+      </button>
+    </div>
+
+    <!-- DASHBOARD -->
+    <main class="page active" id="page-dashboard"></main>
+
+    <!-- DAILY TRACKER -->
+    <main class="page" id="page-tracker"></main>
+
+    <!-- 90 DAY CALENDAR -->
+    <main class="page" id="page-calendar"></main>
+
+    <!-- PROGRESS -->
+    <main class="page" id="page-progress"></main>
+
+    <!-- WEEKLY REVIEW -->
+    <main class="page" id="page-weekly"></main>
+
+    <!-- GOALS -->
+    <main class="page" id="page-goals"></main>
+
+    <!-- SETTINGS -->
+    <main class="page" id="page-settings"></main>
+  </div>
+
+  <nav class="mobile-bottomnav" id="mobile-bottomnav">
+    <button data-page="dashboard" class="active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+      Home
+    </button>
+    <button data-page="tracker">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      Today
+    </button>
+    <button data-page="calendar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+      90 Days
+    </button>
+    <button data-page="progress">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg>
+      Progress
+    </button>
+    <button id="btn-more">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/><circle cx="5" cy="12" r="1.6"/></svg>
+      More
+    </button>
+  </nav>
+
+  <div class="mobile-drawer" id="mobile-drawer">
+    <div class="scrim"></div>
+    <div class="sheet">
+      <div class="sheet-handle"></div>
+      <button class="sheet-item" data-page="weekly">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19h16M4 15h10M4 11h13M4 7h7"/></svg>
+        Weekly Review
+      </button>
+      <button class="sheet-item" data-page="goals">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/></svg>
+        Goals
+      </button>
+      <button class="sheet-item" data-page="settings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82"/></svg>
+        Profile &amp; Settings
+      </button>
+      <button class="sheet-item" id="drawer-logout">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+        Log out
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     MODAL & TOAST ROOTS
+     ============================================================ -->
+<div id="modal-root"></div>
+<div class="toast-wrap" id="toast-wrap"></div>
+
+<script src="js/storage.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/charts.js"></script>
+<script src="js/ui-common.js"></script>
+<script src="js/views.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
